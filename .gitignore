@@ -1,0 +1,13 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools/
+*.sln
+*.csproj
+*.unityproj
+.DS_Store
+.vs/
+.idea/
+.vscode/
