@@ -7,19 +7,17 @@ public class TestInput : MonoBehaviour
 
     void Start()
     {
-        // Megkeressük a többi scriptet a játékban
         runner = FindObjectOfType<AlgorithmRunner>();
         character = FindObjectOfType<CharacterMovement>();
     }
 
     void Update()
     {
-        // 1-es gomb: Sima manuális módszer
+        // 1-es: Manuális
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (!runner.IsRunning)
             {
-                Debug.Log("Teszt 1: Manuális");
                 runner.ClearCommands();
                 runner.AddCommand(new MoveForwardCommand(character));
                 runner.AddCommand(new TurnRightCommand(character));
@@ -27,20 +25,37 @@ public class TestInput : MonoBehaviour
             }
         }
 
-        // 2-es gomb: CIKLUS (Loop) - Ez a lényeg!
+        // 2-es: Ciklus (Loop)
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (!runner.IsRunning)
             {
-                Debug.Log("Teszt 2: Ciklus");
                 runner.ClearCommands();
-
-                // Ez a "Loop" blokk logikája: 4-szer ismétlünk
                 for (int i = 0; i < 4; i++)
                 {
                     runner.AddCommand(new MoveForwardCommand(character));
                     runner.AddCommand(new TurnRightCommand(character));
                 }
+                runner.StartAlgorithm();
+            }
+        }
+
+        // 3-as: IF / ELSE (Okos döntés) - EZ AZ ÚJ!
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (!runner.IsRunning)
+            {
+                Debug.Log("Teszt 3: Okos IF döntés");
+                runner.ClearCommands();
+
+                // Itt rakjuk össze a logikát:
+                // HA (Szabad az út) -> Akkor: Lépj Elõre (MoveForward)
+                // KÜLÖNBEN (Fal van) -> Akkor: Fordulj Jobbra (TurnRight)
+
+                ICommand haIgaz = new MoveForwardCommand(character);
+                ICommand haHamis = new TurnRightCommand(character);
+
+                runner.AddCommand(new IfClearCommand(character, haIgaz, haHamis));
 
                 runner.StartAlgorithm();
             }
