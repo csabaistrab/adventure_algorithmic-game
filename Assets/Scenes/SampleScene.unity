@@ -729,6 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
   stepSize: 1
   moveDuration: 0.5
+  stepText: {fileID: 1699829347}
 --- !u!212 &983290423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1019,6 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab8eef40251e1c4cb92bac702a7d0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlgorithmRunner
+  stepText: {fileID: 1699829347}
 --- !u!4 &1331810026
 Transform:
   m_ObjectHideFlags: 0
